@@ -68,10 +68,14 @@
       });
 
       function btn_Class() {
+        countClass = parseInt(numClass_init.value);
         resultClass.textContent = numClass_init.value;
+        counterClass.count = countClass;
+        countClass.getCount();
+
         // const countFunc = numFunc_init.value;
-        countClass = numClass_init.value;
-        console.log(countClass);
+        // countClass = numClass_init.value;
+        // console.log(countClass);
         // const counterFunc = createCounter(countFunc);
         // counterClass = Counter(countClass);
         // countClass = counterClass.getCount();
