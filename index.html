@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="mainFunc.js"></script>
+    <script src="mainClass.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="left">
+        <h2>Function</h2>
+        <h2 id="resultFunc"></h2>
+        <div class="btn-wrap">
+          <button class="btn btn-red" id="plusFunc">+</button>
+          <button class="btn btn-red" id="minusFunc">-</button>
+        </div>
+        <div class="opriton-wrap">
+          <div class="input-wrap">
+            <label>初期値</label>
+            <input type="number" id="countFunc" value="0" />
+            <button id="initialFuncCountSet" class="btn btn-gray">set</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <h2>Class</h2>
+        <h2 id="resultClass">0</h2>
+        <div class="btn-wrap">
+          <button class="btn btn-blue" id="plusClass">+</button>
+          <button class="btn btn-blue" id="minusClass">-</button>
+        </div>
+        <div class="opriton-wrap">
+          <div class="input-wrap">
+            <label>初期値</label>
+            <input type="number" id="countClass" value="0" />
+            <button id="initialClassCountSet" class="btn btn-gray">set</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classバージョン -->
+    <script>
+      let countClass = 0;
+      const resultClass = document.getElementById("resultClass");
+      resultClass.innerText = countClass;
+      const plusClass = document.getElementById("plusClass");
+      const minusClass = document.getElementById("minusClass");
+      const counterClass = new Counter(countClass);
+      const btnClass_init = document.getElementById("initialClassCountSet");
+      const numClass_init = document.getElementById("countClass");
+
+      btnClass_init.addEventListener("click", btn_Class);
+
+      plusClass.addEventListener("click", () => {
+        console.log(countClass);
+        counterClass.increment();
+        resultClass.textContent = counterClass.getCount();
+      });
+      minusClass.addEventListener("click", () => {
+        counterClass.decrement();
+        resultClass.textContent = counterClass.getCount();
+      });
+
+      function btn_Class() {
+        resultClass.textContent = numClass_init.value;
+        // const countFunc = numFunc_init.value;
+        countClass = numClass_init.value;
+        console.log(countClass);
+        // const counterFunc = createCounter(countFunc);
+        // counterClass = Counter(countClass);
+        // countClass = counterClass.getCount();
+        // console.log(resultClass.textContent);
+      }
+    </script>
+
+    <!-- 関数バージョン -->
+    <script>
+      let countFunc = 0;
+      const resultFunc = document.getElementById("resultFunc");
+      resultFunc.innerText = countFunc;
+      const plusFunc = document.getElementById("plusFunc");
+      const minusFunc = document.getElementById("minusFunc");
+      const btnFunc_init = document.getElementById("initialFuncCountSet");
+      const numFunc_init = document.getElementById("countFunc");
+
+      let counterFunc = createCounter(countFunc);
+
+      btnFunc_init.addEventListener("click", btn_func);
+
+      plusFunc.addEventListener("click", () => {
+        counterFunc.increment();
+        resultFunc.textContent = counterFunc.getCount();
+      });
+      minusFunc.addEventListener("click", () => {
+        counterFunc.decrement();
+        resultFunc.textContent = counterFunc.getCount();
+      });
+
+      function btn_func() {
+        resultFunc.textContent = numFunc_init.value;
+        countFunc = numFunc_init.value;
+        console.log(resultFunc.textContent);
+        counterFunc = createCounter(countFunc);
+      }
+    </script>
+  </body>
+</html>
